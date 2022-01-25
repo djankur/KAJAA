@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kajaa/screens/LoginPage.dart';
 
-import 'package:kajaa/screens/car.dart';
-import 'car.dart';
+import 'LoginPage.dart';
+
+// import 'package:kajaa/screens/car.dart';
+// import 'car.dart';
 
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
@@ -123,7 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const MainListView(),
+                          builder: (context) => const LoginPage(
+                            title: '',
+                          ),
                         ));
                   },
                   child: const Text('Get Started'),
@@ -142,14 +147,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     TextButton(
-                        onPressed: login,
-                        child: const Text(
-                          "Sign up.",
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w200),
-                        ))
+                      onPressed: login,
+                      child: const Text(
+                        "Sign up.",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w200),
+                      ),
+                    )
                   ],
                 ),
               ],

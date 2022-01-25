@@ -1,15 +1,12 @@
-// ignore_for_file: deprecated_member_use, file_names
+// ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:kajaa/palatte.dart';
+import 'package:kajaa/widgets/backgroundimage.dart';
 
-import "../widgets/widgets.dart";
+import '../palatte.dart';
 
-// ignore: camel_case_types
-class Login_Page extends StatelessWidget {
-  const Login_Page({Key? key, required String title}) : super(key: key);
-
-  get child => null;
+class RegistrationPage extends StatelessWidget {
+  const RegistrationPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +32,28 @@ class Login_Page extends StatelessWidget {
                 // ignore: avoid_unnecessary_containers
                 Container(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 120, horizontal: 40),
+                      const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
                   child: Column(
                     // crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[800]?.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 40,
+                            ),
+                            border: InputBorder.none,
+                            hintText: 'Full Name',
+                            hintStyle: kBodyText,
+                          ),
+                          style: kBodyText,
+                          textInputAction: TextInputAction.next,
+                        ),
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[800]?.withOpacity(0.5),
@@ -55,6 +70,24 @@ class Login_Page extends StatelessWidget {
                           ),
                           style: kBodyText,
                           keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[800]?.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 40,
+                            ),
+                            border: InputBorder.none,
+                            hintText: 'Phone',
+                            hintStyle: kBodyText,
+                          ),
+                          style: kBodyText,
                           textInputAction: TextInputAction.next,
                         ),
                       ),
@@ -78,6 +111,26 @@ class Login_Page extends StatelessWidget {
                           textInputAction: TextInputAction.done,
                         ),
                       ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[800]?.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 40,
+                            ),
+                            border: InputBorder.none,
+                            hintText: 'Confirm Password',
+                            hintStyle: kBodyText,
+                          ),
+                          obscureText: true,
+                          style: kBodyText,
+                          textInputAction: TextInputAction.done,
+                        ),
+                      ),
                       Column(
                         // crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -89,7 +142,7 @@ class Login_Page extends StatelessWidget {
                             child: FlatButton(
                               onPressed: () {},
                               child: const Text(
-                                'Login',
+                                'Done',
                                 style: kBodyText,
                               ),
                             ),
@@ -102,18 +155,18 @@ class Login_Page extends StatelessWidget {
                             child: FlatButton(
                               onPressed: () {},
                               child: const Text(
-                                'Register Now',
+                                'Login',
                                 style: kBodyText,
                               ),
                             ),
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              "Forget Password ?",
-                              style: kBodyLink,
-                            ),
-                          )
+                          // TextButton(
+                          //   onPressed: () {},
+                          //   child: const Text(
+                          //     "Forget Password ?",
+                          //     style: kBodyLink,
+                          //   ),
+                          // )
                         ],
                       ),
                     ],

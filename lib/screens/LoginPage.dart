@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
 
 import "../widgets/widgets.dart";
+import 'Registration.dart';
 
 // ignore: camel_case_types
 class Login_Page extends StatelessWidget {
@@ -100,7 +101,14 @@ class Login_Page extends StatelessWidget {
                                 color: Colors.blue[900],
                                 borderRadius: BorderRadius.circular(50)),
                             child: FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const RegistrationPage(),
+                                    ));
+                              },
                               child: const Text(
                                 'Register Now',
                                 style: kBodyText,

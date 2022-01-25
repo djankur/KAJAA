@@ -1,3 +1,5 @@
+// ignore: duplicate_ignore
+// ignore: file_names, file_names
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
@@ -32,7 +34,7 @@ class RegistrationPage extends StatelessWidget {
                 // ignore: avoid_unnecessary_containers
                 Container(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                   child: Column(
                     // crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -55,6 +57,7 @@ class RegistrationPage extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
                           color: Colors.grey[800]?.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(16),
@@ -74,6 +77,7 @@ class RegistrationPage extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
                           color: Colors.grey[800]?.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(16),
@@ -92,7 +96,7 @@ class RegistrationPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
                           color: Colors.grey[800]?.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(16),
@@ -112,7 +116,7 @@ class RegistrationPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
                           color: Colors.grey[800]?.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(16),
@@ -156,7 +160,7 @@ class RegistrationPage extends StatelessWidget {
                               onPressed: () {},
                               child: const Text(
                                 'Login',
-                                style: kBodyText,
+                                style: kBodyLink,
                               ),
                             ),
                           ),

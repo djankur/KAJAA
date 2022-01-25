@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:kajaa/screens/car.dart';
+import 'car.dart';
+
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter/painting.dart';
@@ -116,14 +119,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPrimary: Colors.white, // foreground
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
-                  onPressed: null,
-                  // () {
-                  //   Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //         builder: (context) => const Bike(),
-                  //       ));
-                  // },
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MainListView(),
+                        ));
+                  },
                   child: const Text('Get Started'),
                 ),
                 Row(

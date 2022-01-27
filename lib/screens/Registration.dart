@@ -18,169 +18,171 @@ class RegistrationPage extends StatelessWidget {
         BackgroundImage(),
         Scaffold(
           backgroundColor: Colors.transparent,
-          body: SafeArea(
-            child: Column(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                const SizedBox(
-                  height: 150,
-                  child: Center(
-                    child: Text(
-                      'oK AAJA',
-                      style: kHeading,
+          body: SingleChildScrollView(
+            child: SafeArea(
+              child: Column(
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  const SizedBox(
+                    height: 150,
+                    child: Center(
+                      child: Text(
+                        'oK AAJA',
+                        style: kHeading,
+                      ),
                     ),
                   ),
-                ),
-                // ignore: avoid_unnecessary_containers
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey[800]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 40,
-                            ),
-                            border: InputBorder.none,
-                            hintText: 'Full Name',
-                            hintStyle: kBodyText,
+                  // ignore: avoid_unnecessary_containers
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 40),
+                    child: Column(
+                      // crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey[800]?.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16),
                           ),
-                          style: kBodyText,
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[800]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 40,
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 40,
+                              ),
+                              border: InputBorder.none,
+                              hintText: 'Full Name',
+                              hintStyle: kBodyText,
                             ),
-                            border: InputBorder.none,
-                            hintText: 'Email',
-                            hintStyle: kBodyText,
+                            style: kBodyText,
+                            textInputAction: TextInputAction.next,
                           ),
-                          style: kBodyText,
-                          keyboardType: TextInputType.emailAddress,
-                          textInputAction: TextInputAction.next,
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[800]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 40,
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[800]?.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 40,
+                              ),
+                              border: InputBorder.none,
+                              hintText: 'Email',
+                              hintStyle: kBodyText,
                             ),
-                            border: InputBorder.none,
-                            hintText: 'Phone',
-                            hintStyle: kBodyText,
+                            style: kBodyText,
+                            keyboardType: TextInputType.emailAddress,
+                            textInputAction: TextInputAction.next,
                           ),
-                          style: kBodyText,
-                          textInputAction: TextInputAction.next,
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[800]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 40,
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[800]?.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 40,
+                              ),
+                              border: InputBorder.none,
+                              hintText: 'Phone',
+                              hintStyle: kBodyText,
                             ),
-                            border: InputBorder.none,
-                            hintText: 'Password',
-                            hintStyle: kBodyText,
+                            style: kBodyText,
+                            textInputAction: TextInputAction.next,
                           ),
-                          obscureText: true,
-                          style: kBodyText,
-                          textInputAction: TextInputAction.done,
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[800]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 40,
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[800]?.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 40,
+                              ),
+                              border: InputBorder.none,
+                              hintText: 'Password',
+                              hintStyle: kBodyText,
                             ),
-                            border: InputBorder.none,
-                            hintText: 'Confirm Password',
-                            hintStyle: kBodyText,
+                            obscureText: true,
+                            style: kBodyText,
+                            textInputAction: TextInputAction.done,
                           ),
-                          obscureText: true,
-                          style: kBodyText,
-                          textInputAction: TextInputAction.done,
                         ),
-                      ),
-                      Column(
-                        // crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          // ignore: avoid_unnecessary_containers
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.blue[900],
-                                borderRadius: BorderRadius.circular(50)),
-                            child: FlatButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Done',
-                                style: kBodyText,
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[800]?.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 40,
+                              ),
+                              border: InputBorder.none,
+                              hintText: 'Confirm Password',
+                              hintStyle: kBodyText,
+                            ),
+                            obscureText: true,
+                            style: kBodyText,
+                            textInputAction: TextInputAction.done,
+                          ),
+                        ),
+                        Column(
+                          // crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            // ignore: avoid_unnecessary_containers
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.blue[900],
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: FlatButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  'Done',
+                                  style: kBodyText,
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(vertical: 20),
-                            decoration: BoxDecoration(
-                                color: Colors.blue[900],
-                                borderRadius: BorderRadius.circular(50)),
-                            child: FlatButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Login',
-                                style: kBodyLink,
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 20),
+                              decoration: BoxDecoration(
+                                  color: Colors.blue[900],
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: FlatButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  'Login',
+                                  style: kBodyLink,
+                                ),
                               ),
                             ),
-                          ),
-                          // TextButton(
-                          //   onPressed: () {},
-                          //   child: const Text(
-                          //     "Forget Password ?",
-                          //     style: kBodyLink,
-                          //   ),
-                          // )
-                        ],
-                      ),
-                    ],
+                            // TextButton(
+                            //   onPressed: () {},
+                            //   child: const Text(
+                            //     "Forget Password ?",
+                            //     style: kBodyLink,
+                            //   ),
+                            // )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                // const Text(
-                //   'forgot password?',
-                //   style: kBodyLink,
-                // )
-              ],
+                  // const Text(
+                  //   'forgot password?',
+                  //   style: kBodyLink,
+                  // )
+                ],
+              ),
             ),
           ),
         ),

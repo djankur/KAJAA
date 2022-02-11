@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
+import 'package:kajaa/screens/car.dart';
+import 'package:kajaa/screens/car_detail.dart';
 
 import "../widgets/widgets.dart";
 import 'Registration.dart';
@@ -117,7 +119,14 @@ class Login_Page extends StatelessWidget {
                               ),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const MainListView(),
+                                    ));
+                              },
                               child: const Text(
                                 "Forget Password ?",
                                 style: kBodyLink,

@@ -1,10 +1,6 @@
-2022/01/26-02:22:49.048 3110 Log #3: 3 ops saved to Table #7 OK
-2022/01/26-02:22:49.051 3110 Archiving C:\Users\Ankur\AppData\Local\Temp\flutter_tools.e2a75d8d\flutter_tools_chrome_device.2e2d3f57\Default\Site Characteristics Database/000003.log: OK
-2022/01/26-02:22:49.058 3110 Log #6: 1 ops saved to Table #8 OK
-2022/01/26-02:22:49.059 3110 Archiving C:\Users\Ankur\AppData\Local\Temp\flutter_tools.e2a75d8d\flutter_tools_chrome_device.2e2d3f57\Default\Site Characteristics Database/000006.log: OK
-2022/01/26-02:22:49.061 3110 Table #4: 3 entries OK
-2022/01/26-02:22:49.061 3110 Table #6: 3 entries OK
-2022/01/26-02:22:49.062 3110 Table #7: 3 entries OK
-2022/01/26-02:22:49.062 3110 Table #8: 1 entries OK
-2022/01/26-02:22:49.066 3110 Archiving C:\Users\Ankur\AppData\Local\Temp\flutter_tools.e2a75d8d\flutter_tools_chrome_device.2e2d3f57\Default\Site Characteristics Database/MANIFEST-000001: OK
-2022/01/26-02:22:49.075 3110 **** Repaired leveldb C:\Users\Ankur\AppData\Local\Temp\flutter_tools.e2a75d8d\flutter_tools_chrome_device.2e2d3f57\Default\Site Characteristics Database; recovered 4 files; 834 bytes. Some data may have been lost. ****
+2022/02/06-11:43:01.077 11d03 Reusing MANIFEST /private/var/folders/g2/07kj4z510m95332mm0__st680000gn/T/flutter_tools.Xm2gMQ/flutter_tools_chrome_device.6X4xYs/Default/Site Characteristics Database/MANIFEST-000001
+2022/02/06-11:43:01.079 11d03 Recovering log #10
+2022/02/06-11:43:01.080 11d03 Reusing old log /private/var/folders/g2/07kj4z510m95332mm0__st680000gn/T/flutter_tools.Xm2gMQ/flutter_tools_chrome_device.6X4xYs/Default/Site Characteristics Database/000010.log 
+2022/02/06-11:43:01.081 11d03 Delete type=0 #6
+2022/02/06-11:43:01.081 11d03 Delete type=0 #3
+2022/02/06-11:43:01.081 11d03 Delete type=2 #11

@@ -37,9 +37,32 @@ class MainListViewState extends State {
           foregroundColor: Colors.black,
           elevation: 0,
         ),
-        body: Column(children: const <Widget>[
-          Expanded(child: TopCar()),
-          Expanded(child: AllCar())
-        ]));
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(children: const <Widget>[
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Top cars",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                height: 220,
+                child: TopCar(),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "All Cars",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              AllCar(),
+            ]),
+          ),
+        ));
   }
 }

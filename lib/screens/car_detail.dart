@@ -1,28 +1,42 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:kajaa/services/api_service.dart';
+import 'package:kajaa/services/url_service.dart';
 
 class CarDetail extends StatefulWidget {
-  final int carid;
+  final String carid;
   const CarDetail({Key? key, required this.carid}) : super(key: key);
 
   @override
   _CarDetailState createState() => _CarDetailState();
 }
 
-class _CarDetailState extends State<CarDetail>
-    with SingleTickerProviderStateMixin {
-  // Keep track of selected car index;
-  int selectedIndex = 0;
+class _CarDetailState extends State<CarDetail> {
+  var carData = {};
+  bool isLoading = true;
+  var api = ApiService();
 
-  Map<String, dynamic> cardetails = {};
-
-  getcardetails() async {}
+  getCarDetails() async {
+    setState(() {
+      isLoading = true;
+    });
+    var response = await api
+        .getRequest(UrlService.viewCarDetails + "?carid=" + widget.carid);
+    print(response);
+    if (response["success"]) {
+      setState(() {
+        carData = response["data"];
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getCarDetails();
   }
 
   @override
@@ -48,11 +62,9 @@ class _CarDetailState extends State<CarDetail>
         foregroundColor: Colors.black,
         elevation: 0,
       ),
-      body: cardetails["id"] == null
-          ? const SizedBox(
-              width: double.infinity,
-              height: double.infinity,
-              child: Center(child: Text("No details available.")),
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
             )
           : SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -74,20 +86,20 @@ class _CarDetailState extends State<CarDetail>
                             const SizedBox(
                               height: 25.0,
                             ),
-                            const Text.rich(
+                            Text.rich(
                               TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: "BMW 8 Series Coupe\n",
-                                    style: TextStyle(
+                                    text: carData["car_name"],
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 22.0,
                                       color: Color(0xFF333333),
                                     ),
                                   ),
                                   TextSpan(
-                                    text: "Starts from \$201,967",
-                                    style: TextStyle(
+                                    text: carData["price"],
+                                    style: const TextStyle(
                                       height: 1.7,
                                       fontSize: 14.0,
                                       color: Colors.grey,

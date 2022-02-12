@@ -51,7 +51,7 @@ class _AllCarState extends State<AllCar> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => CarDetail(
-                            carid: allCars[index]["car_id"](),
+                            carid: allCars[index]["car_id"],
                           ),
                         ));
                   },

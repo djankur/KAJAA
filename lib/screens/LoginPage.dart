@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
 import 'package:kajaa/screens/car.dart';
-import 'package:kajaa/screens/car_detail.dart';
 
 import "../widgets/widgets.dart";
 import 'Registration.dart';

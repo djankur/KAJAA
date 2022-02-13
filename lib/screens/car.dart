@@ -1,10 +1,5 @@
-import 'dart:ui';
-
-import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:kajaa/screens/car_detail.dart';
-import 'package:kajaa/services/url_service.dart';
+import 'package:kajaa/screens/profile.dart';
 import 'package:kajaa/screens/components/allcar.dart';
 import 'package:kajaa/screens/components/topcar.dart';
 
@@ -25,10 +20,19 @@ class MainListViewState extends State {
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.asset(
-                  'assets/images/profile.jpg',
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Profile(),
+                      ));
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.asset(
+                    'assets/images/profile.jpg',
+                  ),
                 ),
               ),
             ),

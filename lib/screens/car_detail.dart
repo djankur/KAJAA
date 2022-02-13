@@ -45,17 +45,6 @@ class _CarDetailState extends State<CarDetail> {
         ),
         appBar: AppBar(
           title: const Text("Details"),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.asset(
-                  'assets/images/profile.jpg',
-                ),
-              ),
-            ),
-          ],
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
           elevation: 0,

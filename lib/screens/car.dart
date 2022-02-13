@@ -19,7 +19,7 @@ class MainListViewState extends State {
           title: const Text("Rent a Car"),
           actions: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -43,29 +43,33 @@ class MainListViewState extends State {
         ),
         body: SafeArea(
           child: SingleChildScrollView(
-            child: Column(children: const <Widget>[
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Top cars",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-              SizedBox(
-                height: 220,
-                child: TopCar(),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "All Cars",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-              AllCar(),
-            ]),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                    child: Text(
+                      "Top cars",
+                      style: TextStyle(
+                          fontSize: 16, color: Colors.black.withOpacity(.7)),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 220,
+                    child: TopCar(),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                    child: Text(
+                      "All Cars",
+                      style: TextStyle(
+                          fontSize: 16, color: Colors.black.withOpacity(.7)),
+                    ),
+                  ),
+                  const AllCar(),
+                ]),
           ),
         ));
   }

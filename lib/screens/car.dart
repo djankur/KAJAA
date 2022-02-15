@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kajaa/services/navigation.dart';
 import 'package:kajaa/screens/profile.dart';
 import 'package:kajaa/screens/components/allcar.dart';
 import 'package:kajaa/screens/components/topcar.dart';
@@ -22,11 +23,10 @@ class MainListViewState extends State {
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Profile(),
-                      ));
+                  AppNavigation.push(
+                    context,
+                    const Profile(),
+                  );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),

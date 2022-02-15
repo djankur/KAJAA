@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kajaa/screens/LoginPage.dart';
 import 'package:kajaa/palatte.dart';
+import 'package:kajaa/services/navigation.dart';
 import 'LoginPage.dart';
 
 // import 'package:kajaa/screens/car.dart';
@@ -102,13 +103,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ElevatedButton(
                   style: kButton,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Login_Page(
-                            title: '',
-                          ),
-                        ));
+                    AppNavigation.push(
+                      context,
+                      const Login_Page(title: ''),
+                    );
                   },
                   child: const Text('Get Started'),
                 ),

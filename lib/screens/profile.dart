@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
+import 'package:kajaa/services/navigation.dart';
+import 'package:kajaa/screens/home.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -9,6 +11,32 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State {
+  logout() async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: const Text("Are you sure?"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  AppNavigation.push(
+                      context,
+                      const MyHomePage(
+                        title: '',
+                      ));
+                },
+                child: const Text("Yes"),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("No"),
+              )
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +48,7 @@ class ProfileState extends State {
           elevation: 0,
           actions: [
             TextButton(
-              onPressed: () {},
+              onPressed: logout,
               child: const Text('Log Out'),
             ),
           ],

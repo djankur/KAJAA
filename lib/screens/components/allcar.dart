@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kajaa/screens/car_detail.dart';
 import 'package:kajaa/services/url_service.dart';
+import 'package:kajaa/services/navigation.dart';
 
 class AllCar extends StatefulWidget {
   const AllCar({Key? key}) : super(key: key);
@@ -47,12 +48,10 @@ class _AllCarState extends State<AllCar> {
                 padding: const EdgeInsets.all(8),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    AppNavigation.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => CarDetail(
-                            carid: allCars[index]["car_id"],
-                          ),
+                        CarDetail(
+                          carid: allCars[index]["car_id"],
                         ));
                   },
                   child: Container(

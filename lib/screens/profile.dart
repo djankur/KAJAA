@@ -18,6 +18,12 @@ class ProfileState extends State {
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
           elevation: 0,
+          actions: [
+            TextButton(
+              onPressed: () {},
+              child: const Text('Log Out'),
+            ),
+          ],
         ),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -29,6 +35,7 @@ class ProfileState extends State {
                   borderRadius: BorderRadius.circular(500),
                   child: Image.asset(
                     'assets/images/profile.jpg',
+                    width: 150,
                   ),
                 ),
               ),
@@ -39,6 +46,16 @@ class ProfileState extends State {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Center(
+                      child: ElevatedButton(
+                        style: kButton,
+                        onPressed: () {},
+                        child: const Text('My Bookings'),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Text(
                       "Username",
                       style: TextStyle(
@@ -75,26 +92,6 @@ class ProfileState extends State {
                       "14/02/2022",
                       style: TextStyle(
                         color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: ElevatedButton(
-                        style: kButton,
-                        onPressed: () {},
-                        child: const Text('My Bookings'),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: ElevatedButton(
-                        style: kButton,
-                        onPressed: () {},
-                        child: const Text('Log Out'),
                       ),
                     ),
                   ],

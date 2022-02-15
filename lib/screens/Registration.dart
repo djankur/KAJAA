@@ -2,13 +2,36 @@
 // ignore: file_names, file_names
 // ignore_for_file: deprecated_member_use
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kajaa/widgets/backgroundimage.dart';
 
 import '../palatte.dart';
 
-class RegistrationPage extends StatelessWidget {
+class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
+  @override
+  // ignore: override_on_non_overriding_member
+  _Reg createState() => _Reg();
+}
+
+class _Reg extends State<RegistrationPage> {
+  final _formKey = GlobalKey<FormState>();
+  final _client = Dio();
+
+  Map<String, dynamic> formData = {};
+  signup() async {
+    var formvalidate = _formKey.currentState!.validate();
+    if (formvalidate) {
+      _formKey.currentState!.save();
+      var response = await _client.post(
+          "http://your-ip-address/lily/signup.php",
+          data: FormData.fromMap(formData));
+      print(response);
+    } else {
+      print("Form is not validate");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +41,8 @@ class RegistrationPage extends StatelessWidget {
         BackgroundImage(),
         Scaffold(
           backgroundColor: Colors.transparent,
-          body: SingleChildScrollView(
-            child: SafeArea(
+          body: Form(
+            child: SingleChildScrollView(
               child: Column(
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
@@ -128,7 +151,7 @@ class RegistrationPage extends StatelessWidget {
                                 horizontal: 40,
                               ),
                               border: InputBorder.none,
-                              hintText: 'Confirm Password',
+                              hintText: 'Licence Number',
                               hintStyle: kBodyText,
                             ),
                             obscureText: true,

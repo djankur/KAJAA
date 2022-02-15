@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kajaa/palatte.dart';
 import 'package:kajaa/services/api_service.dart';
 import 'package:kajaa/services/url_service.dart';
 
@@ -14,6 +15,23 @@ class _CarDetailState extends State<CarDetail> {
   var carData = {};
   bool isLoading = true;
   var api = ApiService();
+
+  booked() async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: const Text(
+                "Your car has been successfully booked. You can view your booking in the profile section."),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("Continue"),
+              )
+            ],
+          );
+        });
+  }
 
   getCarDetails() async {
     setState(() {
@@ -197,15 +215,8 @@ class _CarDetailState extends State<CarDetail> {
                               ),
                               Center(
                                 child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20, horizontal: 90),
-                                      primary: Colors.lightBlue, // background
-                                      onPrimary: Colors.white, // foreground
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(50))),
-                                  onPressed: () {},
+                                  style: kButton,
+                                  onPressed: booked,
                                   child: const Text('Book Car'),
                                 ),
                               ),

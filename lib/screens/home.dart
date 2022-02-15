@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kajaa/screens/LoginPage.dart';
-
+import 'package:kajaa/palatte.dart';
 import 'LoginPage.dart';
 
 // import 'package:kajaa/screens/car.dart';
@@ -100,13 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 45),
-                      primary: Colors.lightBlue, // background
-                      onPrimary: Colors.white, // foreground
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
+                  style: kButton,
                   onPressed: () {
                     Navigator.push(
                         context,

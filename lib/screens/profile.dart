@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kajaa/palatte.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -81,13 +82,17 @@ class ProfileState extends State {
                     ),
                     Center(
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 90),
-                            primary: Colors.lightBlue, // background
-                            onPrimary: Colors.white, // foreground
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50))),
+                        style: kButton,
+                        onPressed: () {},
+                        child: const Text('My Bookings'),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        style: kButton,
                         onPressed: () {},
                         child: const Text('Log Out'),
                       ),

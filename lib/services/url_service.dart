@@ -5,4 +5,6 @@ class UrlService {
   static const viewCarDetails = baseUrl + "car_details.php";
   static const allCars = baseUrl + "view_car.php";
   static const topCars = baseUrl + "topcar.php";
+  static const loginP = baseUrl + "login.php";
+  static const signupP = baseUrl + "signup.php";
 }

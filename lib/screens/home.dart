@@ -105,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     AppNavigation.push(
                       context,
-                      const Login_Page(title: ''),
+                      const Login(),
                     );
                   },
                   child: const Text('Get Started'),

@@ -3,6 +3,7 @@ import 'package:kajaa/services/navigation.dart';
 import 'package:kajaa/screens/profile.dart';
 import 'package:kajaa/screens/components/allcar.dart';
 import 'package:kajaa/screens/components/topcar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainListView extends StatefulWidget {
   const MainListView({Key? key}) : super(key: key);
@@ -12,6 +13,21 @@ class MainListView extends StatefulWidget {
 }
 
 class MainListViewState extends State {
+  String email = "";
+
+  Future getEmail() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      email = preferences.getString('email')!;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getEmail();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -33,11 +33,10 @@ class _SignupState extends State<Signup> {
       var reply = jsonDecode(response.data);
       print(reply);
       if (reply == "success") {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const Login(),
-            ));
+        AppNavigation.push(
+          context,
+          const Login(),
+        );
       }
     }
   }

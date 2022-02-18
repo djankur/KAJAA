@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kajaa/palatte.dart';
 import 'package:kajaa/services/navigation.dart';
 import 'package:kajaa/screens/LoginPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -11,6 +13,31 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State {
+  String email = "";
+
+  Future getEmail() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      email = preferences.getString('email')!;
+    });
+  }
+
+  Future logOut(BuildContext context) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.remove('email');
+    Fluttertoast.showToast(
+        msg: "Logout Successful",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.amber,
+        textColor: Colors.white,
+        fontSize: 16.0);
+    AppNavigation.push(
+      context,
+      const Login(),
+    );
+  }
+
   logout() async {
     return showDialog(
         context: context,
@@ -20,7 +47,7 @@ class ProfileState extends State {
             actions: [
               TextButton(
                 onPressed: () {
-                  AppNavigation.push(context, const Login());
+                  logOut(context);
                 },
                 child: const Text("Yes"),
               ),
@@ -31,6 +58,12 @@ class ProfileState extends State {
             ],
           );
         });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getEmail();
   }
 
   @override
@@ -94,14 +127,14 @@ class ProfileState extends State {
                     ),
                     const Divider(),
                     Text(
-                      "Registraion no.",
+                      "E-mail",
                       style: TextStyle(
                         color: Colors.black.withOpacity(.5),
                       ),
                     ),
-                    const Text(
-                      "TEST-1445544",
-                      style: TextStyle(
+                    Text(
+                      email,
+                      style: const TextStyle(
                         color: Colors.black,
                       ),
                     ),

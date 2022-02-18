@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kajaa/screens/car.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'screens/home.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  var email = preferences.getString('email');
+  runApp(MaterialApp(
+    home: email == null ? const MyApp() : const MainListView(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

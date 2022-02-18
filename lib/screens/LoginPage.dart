@@ -10,6 +10,7 @@ import "../widgets/widgets.dart";
 import 'Registration.dart';
 import 'package:kajaa/services/url_service.dart';
 import 'car.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -35,11 +36,12 @@ class _LoginState extends State<Login> {
       var reply = jsonDecode(response.data);
       print(reply);
       if (reply == "success") {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const MainListView(),
-            ));
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        preferences.setString('email', formData["email"]);
+        AppNavigation.push(
+          context,
+          const MainListView(),
+        );
       } else {
         Fluttertoast.showToast(
           msg: "No Account",

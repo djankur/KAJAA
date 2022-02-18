@@ -10,6 +10,7 @@ import 'package:kajaa/services/navigation.dart';
 import "../widgets/widgets.dart";
 import 'Registration.dart';
 import 'package:kajaa/services/url_service.dart';
+import 'car.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -52,78 +53,101 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:
-          AppBar(title: const Text("Motoring"), backgroundColor: Colors.green),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          children: <Widget>[
-            SizedBox(height: 50),
-            Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Log in',
-                  style: TextStyle(fontSize: 20),
-                )),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                onSaved: (value) => formData["email"] = value,
-                validator: (value) => value == "" ? "email is required" : null,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Stack(
+        children: [
+          const BackgroundImage(),
+          Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const Center(
+                    child: Text(
+                      'Login',
+                      style: kHeading,
+                    ),
                   ),
-                  hintText: "enter email",
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                validator: (value) =>
-                    value == "" ? "password is required" : null,
-                onSaved: (value) => formData["password"] = value,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      onSaved: (value) => formData["email"] = value,
+                      validator: (value) =>
+                          value == "" ? "E-mail cannot be empty" : null,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: "Enter your e-mail",
+                      ),
+                    ),
                   ),
-                  hintText: "enter password",
-                ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      validator: (value) =>
+                          value == "" ? "password cannot be empty" : null,
+                      onSaved: (value) => formData["password"] = value,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: "Enter your password",
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      style: kButton,
+                      onPressed: login,
+                      child: const Text(
+                        "Login",
+                        style: kBodyText,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Not registered yet? ",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          AppNavigation.push(
+                            context,
+                            const Signup(),
+                          );
+                        },
+                        child: const Text(
+                          "Sign up here.",
+                          style: kBodyLink,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              height: 50,
-              //width: 70,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.blueAccent),
-                    elevation: MaterialStateProperty.all(5),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0)))),
-                onPressed: login,
-                child: const Text(
-                  "Login",
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Signup(),
-                    )); ///// Add home page here
-              },
-              child: const Text("No Account? Signup here"),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

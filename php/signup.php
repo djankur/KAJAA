@@ -3,22 +3,19 @@ include 'connect.php';
 $name=$_POST['name'];
 $email=$_POST['email'];
 $password =$_POST['password'];
-$sql="INSERT INTO user (id,name,email,password)VALUES('','$name','$email','$password') ";
-$result= mysqli_query($con,$sql);
-$count=mysqli_num_rows($result);
-      if($count > 0)
+$sql="INSERT INTO user (user_id,name,email,password)VALUES(null,'$name','$email','$password') ";
+if (mysqli_query($con,$sql))
 {
-        while ($row=mysqli_fetch_array($result))
-        {
-           echo json_encode("success");
-            mysqli_close($con);
-        }
-    }
-    else
-    {
-        
-             echo json_encode("error");
-            
-    }
+    echo json_encode("success");
+     mysqli_close($con);
+ }
+
+else
+{
+ 
+      echo json_encode("error");
+     
+}
+
 
 ?>

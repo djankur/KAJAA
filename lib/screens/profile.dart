@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
 import 'package:kajaa/services/navigation.dart';
-import 'package:kajaa/screens/home.dart';
+import 'package:kajaa/screens/LoginPage.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -20,11 +20,7 @@ class ProfileState extends State {
             actions: [
               TextButton(
                 onPressed: () {
-                  AppNavigation.push(
-                      context,
-                      const MyHomePage(
-                        title: '',
-                      ));
+                  AppNavigation.push(context, const Login());
                 },
                 child: const Text("Yes"),
               ),

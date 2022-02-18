@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
 const TextStyle kHeading = TextStyle(
-  fontSize: 60,
-  fontWeight: FontWeight.bold,
+  fontSize: 40,
+  fontWeight: FontWeight.w600,
   color: Colors.white,
 );
 
 const TextStyle kBodyText = TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.bold,
+  fontSize: 16,
+  fontWeight: FontWeight.w600,
   color: Colors.white,
 );
 
 const TextStyle kBodyLink = TextStyle(
   fontSize: 15,
-  fontWeight: FontWeight.normal,
-  color: Colors.white,
+  fontWeight: FontWeight.w400,
+  color: Colors.blue,
 );
 
 var kButton = ElevatedButton.styleFrom(
-    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 70),
     primary: Colors.lightBlue, // background
     onPrimary: Colors.white, // foreground
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)));
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)));

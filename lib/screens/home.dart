@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kajaa/screens/LoginPage.dart';
 import 'package:kajaa/palatte.dart';
+import 'package:kajaa/screens/Registration.dart';
 import 'package:kajaa/services/navigation.dart';
 import 'LoginPage.dart';
 
@@ -25,22 +26,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  login() {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: const Text("hello world"),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text("OK"),
-              )
-            ],
-          );
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,18 +104,20 @@ class _MyHomePageState extends State<MyHomePage> {
                         "Not registered yet?",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w200),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                     TextButton(
-                      onPressed: login,
+                      onPressed: () {
+                        AppNavigation.push(
+                          context,
+                          const Signup(),
+                        );
+                      },
                       child: const Text(
                         "Sign up.",
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w200),
+                        style: kBodyLink,
                       ),
                     )
                   ],

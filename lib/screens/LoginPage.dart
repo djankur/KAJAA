@@ -2,7 +2,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kajaa/palatte.dart';
 import 'package:kajaa/screens/car.dart';
@@ -44,7 +43,7 @@ class _LoginState extends State<Login> {
       } else {
         Fluttertoast.showToast(
           msg: "No Account",
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.grey,
           gravity: ToastGravity.CENTER,
         );
       }
@@ -62,88 +61,90 @@ class _LoginState extends State<Login> {
             backgroundColor: Colors.transparent,
             body: Form(
               key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  const Center(
-                    child: Text(
-                      'Login',
-                      style: kHeading,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      onSaved: (value) => formData["email"] = value,
-                      validator: (value) =>
-                          value == "" ? "E-mail cannot be empty" : null,
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      const Center(
+                        child: Text(
+                          'Login',
+                          style: kHeading,
                         ),
-                        hintText: "Enter your e-mail",
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      validator: (value) =>
-                          value == "" ? "password cannot be empty" : null,
-                      onSaved: (value) => formData["password"] = value,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          onSaved: (value) => formData["email"] = value,
+                          validator: (value) =>
+                              value == "" ? "* E-mail cannot be empty" : null,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            hintText: "Enter your e-mail",
+                          ),
                         ),
-                        hintText: "Enter your password",
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: ElevatedButton(
-                      style: kButton,
-                      onPressed: login,
-                      child: const Text(
-                        "Login",
-                        style: kBodyText,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Not registered yet? ",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          AppNavigation.push(
-                            context,
-                            const Signup(),
-                          );
-                        },
-                        child: const Text(
-                          "Sign up here.",
-                          style: kBodyLink,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          validator: (value) =>
+                              value == "" ? "* Password cannot be empty" : null,
+                          onSaved: (value) => formData["password"] = value,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            hintText: "Enter your password",
+                          ),
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Center(
+                        child: ElevatedButton(
+                          style: kButton,
+                          onPressed: login,
+                          child: const Text(
+                            "Login",
+                            style: kBodyText,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Not registered yet? ",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              AppNavigation.push(
+                                context,
+                                const Signup(),
+                              );
+                            },
+                            child: const Text(
+                              "Sign up here.",
+                              style: kBodyLink,
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   ),
-                ],
+                ),
               ),
             ),
           ),

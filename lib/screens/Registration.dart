@@ -3,8 +3,6 @@ import 'dart:convert';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kajaa/palatte.dart';
 import 'package:kajaa/services/navigation.dart';
 import 'package:kajaa/services/url_service.dart';
@@ -53,104 +51,106 @@ class _SignupState extends State<Signup> {
           backgroundColor: Colors.transparent,
           body: Form(
             key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                const Center(
-                  child: Text(
-                    'Sign up',
-                    style: kHeading,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    onSaved: (value) => formData["name"] = value,
-                    validator: (value) =>
-                        value == "" ? "Name cannot be empty" : null,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    const Center(
+                      child: Text(
+                        'Sign up',
+                        style: kHeading,
                       ),
-                      hintText: "Enter your name",
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    onSaved: (value) => formData["email"] = value,
-                    validator: (value) =>
-                        value == "" ? "E-mail cannot be empty" : null,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        onSaved: (value) => formData["name"] = value,
+                        validator: (value) =>
+                            value == "" ? "* Name cannot be empty" : null,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          hintText: "Enter your name",
+                        ),
                       ),
-                      hintText: "Enter your e-mail",
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    validator: (value) =>
-                        value == "" ? "Password cannot be empty" : null,
-                    onSaved: (value) => formData["password"] = value,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        onSaved: (value) => formData["email"] = value,
+                        validator: (value) =>
+                            value == "" ? "* E-mail cannot be empty" : null,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          hintText: "Enter your e-mail",
+                        ),
                       ),
-                      hintText: "Enter your password",
                     ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Center(
-                  child: ElevatedButton(
-                    style: kButton,
-                    onPressed: login,
-                    child: const Text(
-                      "Sign Up",
-                      style: kBodyText,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Already registered? ",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        AppNavigation.push(
-                          context,
-                          const Login(),
-                        );
-                      },
-                      child: const Text(
-                        "Login here.",
-                        style: kBodyLink,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        validator: (value) =>
+                            value == "" ? "* Password cannot be empty" : null,
+                        onSaved: (value) => formData["password"] = value,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          hintText: "Enter your password",
+                        ),
                       ),
-                    )
+                    ),
+                    const SizedBox(height: 20),
+                    Center(
+                      child: ElevatedButton(
+                        style: kButton,
+                        onPressed: login,
+                        child: const Text(
+                          "Sign Up",
+                          style: kBodyText,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Already registered? ",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            AppNavigation.push(
+                              context,
+                              const Login(),
+                            );
+                          },
+                          child: const Text(
+                            "Login here.",
+                            style: kBodyLink,
+                          ),
+                        )
+                      ],
+                    ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

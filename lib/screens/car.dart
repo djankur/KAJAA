@@ -55,7 +55,7 @@ class MainListViewState extends State {
         : Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              title: Text(userinfo["name"].toString()),
+              title: const Text("Rent a car"),
               actions: <Widget>[
                 Padding(
                   padding:

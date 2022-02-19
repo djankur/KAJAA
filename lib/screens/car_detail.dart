@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
 import 'package:kajaa/services/api_service.dart';
 import 'package:kajaa/services/url_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CarDetail extends StatefulWidget {
   final String carid;
@@ -12,6 +13,9 @@ class CarDetail extends StatefulWidget {
 }
 
 class _CarDetailState extends State<CarDetail> {
+  String email = "";
+
+  var userinfo = {};
   var carData = {};
   bool isLoading = true;
   var api = ApiService();
@@ -43,6 +47,23 @@ class _CarDetailState extends State<CarDetail> {
     if (response["success"]) {
       setState(() {
         carData = response["data"];
+      });
+    }
+  }
+
+  Future getEmail() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      email = preferences.getString('email')!;
+    });
+  }
+
+  getUserDetails() async {
+    var response = await api.getRequest(UrlService.user + "?email=" + email);
+    print(response);
+    if (response["success"]) {
+      setState(() {
+        userinfo = response["data"];
         isLoading = false;
       });
     }
@@ -52,11 +73,13 @@ class _CarDetailState extends State<CarDetail> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    getEmail();
     getCarDetails();
   }
 
   @override
   Widget build(BuildContext context) {
+    getUserDetails();
     return Scaffold(
         backgroundColor: const Color(
           0XFFF4F4FF,

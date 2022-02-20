@@ -20,22 +20,58 @@ class _CarDetailState extends State<CarDetail> {
   bool isLoading = true;
   var api = ApiService();
 
-  booked() async {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: const Text(
-                "Your car has been successfully booked. You can view your booking in the profile section."),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text("Continue"),
-              )
-            ],
-          );
-        });
+  carBook() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 300,
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Text(
+                  'Confirm booking',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text('Select booking duration',
+                    style: TextStyle(
+                      fontSize: 16,
+                    )),
+                const SizedBox(
+                  height: 15,
+                ),
+                ElevatedButton(child: const Text('Select'), onPressed: () {})
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
+
+  // booked() async {
+  //   return showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return AlertDialog(
+  //           content: const Text(
+  //               "Your car has been successfully booked. You can view your booking in the profile section."),
+  //           actions: [
+  //             TextButton(
+  //               onPressed: () => Navigator.pop(context),
+  //               child: const Text("Continue"),
+  //             )
+  //           ],
+  //         );
+  //       });
+  // }
 
   getCarDetails() async {
     setState(() {
@@ -116,8 +152,8 @@ class _CarDetailState extends State<CarDetail> {
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(50.0),
-                              topRight: Radius.circular(50.0),
+                              topLeft: Radius.circular(25.0),
+                              topRight: Radius.circular(25.0),
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
@@ -239,7 +275,7 @@ class _CarDetailState extends State<CarDetail> {
                               Center(
                                 child: ElevatedButton(
                                   style: kButton,
-                                  onPressed: booked,
+                                  onPressed: carBook,
                                   child: const Text('Book Car'),
                                 ),
                               ),

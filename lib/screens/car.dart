@@ -30,7 +30,7 @@ class MainListViewState extends State {
 
   getUserDetails() async {
     var response = await api.getRequest(UrlService.user + "?email=" + email);
-    print(response);
+    // print(response);
     if (response["success"]) {
       setState(() {
         userinfo = response["data"];

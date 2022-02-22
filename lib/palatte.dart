@@ -19,7 +19,7 @@ const TextStyle kBodyLink = TextStyle(
 );
 
 var kButton = ElevatedButton.styleFrom(
-    padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 70),
+    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
     primary: Colors.lightBlue, // background
     onPrimary: Colors.white, // foreground
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)));

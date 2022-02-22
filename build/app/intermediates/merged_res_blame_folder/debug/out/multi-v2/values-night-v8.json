@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/anirban/Documents/android_project/kajaa/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "C:\\Users\\Kaushik\\Desktop\\okaaja\\kajaa\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/anirban/Documents/android_project/kajaa/android/app/src/main/res/values-night/styles.xml",
+                    "source": "C:\\Users\\Kaushik\\Desktop\\okaaja\\kajaa\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

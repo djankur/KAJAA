@@ -1,4 +1,4 @@
-#Tue Feb 22 11:34:11 IST 2022
-base.0=/Users/anirban/Documents/android_project/kajaa/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+#Tue Feb 22 14:37:48 IST 2022
+base.0=C\:\\Users\\Kaushik\\Desktop\\okaaja\\kajaa\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

@@ -1,4 +1,4 @@
-#Fri Feb 18 14:43:39 IST 2022
+#Tue Feb 22 11:34:11 IST 2022
 base.0=/Users/anirban/Documents/android_project/kajaa/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

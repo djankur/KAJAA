@@ -1,4 +1,3 @@
-// ignore_for_file: deprecated_member_use, file_names
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +31,7 @@ class _LoginState extends State<Login> {
       var response = await _client.post(UrlService.loginP,
           data: FormData.fromMap(formData));
 
-      print(response);
       var reply = jsonDecode(response.data);
-      print(reply);
       if (reply == "success") {
         SharedPreferences preferences = await SharedPreferences.getInstance();
         preferences.setString('email', formData["email"]);

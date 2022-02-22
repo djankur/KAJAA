@@ -22,7 +22,8 @@ class _CarDetailState extends State<CarDetail> {
   var carData = {};
   bool isLoading = true;
   var api = ApiService();
-  var val = "No date selected";
+  var startDate = "No date selected";
+  var endDate = "No date selected";
 
   date() async {
     showDialog<Widget>(
@@ -31,12 +32,18 @@ class _CarDetailState extends State<CarDetail> {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return SfDateRangePicker(
+            minDate: DateTime.now(),
+            headerHeight: 70,
+            showTodayButton: true,
             selectionMode: DateRangePickerSelectionMode.range,
             showActionButtons: true,
             allowViewNavigation: true,
             controller: _dateRangePickerController,
             onSubmit: (value) {
-              val = value.toString();
+              startDate = _dateRangePickerController.selectedRange!.startDate
+                  .toString();
+              endDate =
+                  _dateRangePickerController.selectedRange!.endDate.toString();
               Navigator.pop(context);
               Navigator.pop(context);
               carBook();
@@ -49,7 +56,7 @@ class _CarDetailState extends State<CarDetail> {
         });
   }
 
-  carBook() {
+  carBook() async {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -69,18 +76,60 @@ class _CarDetailState extends State<CarDetail> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Text('Select booking duration',
-                    style: TextStyle(
-                      fontSize: 16,
-                    )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Text('Select booking duration',
+                        style: TextStyle(
+                          fontSize: 16,
+                        )),
+                    ElevatedButton(
+                        child: const Text('Select'), onPressed: date),
+                  ],
+                ),
                 const SizedBox(
                   height: 15,
                 ),
-                ElevatedButton(child: const Text('Select'), onPressed: date),
-                Text(val,
-                    style: const TextStyle(
+                const Text("Booking date:",
+                    style: TextStyle(
                       fontSize: 16,
                     )),
+                Text(startDate,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w800)),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text("Return date:",
+                    style: TextStyle(
+                      fontSize: 16,
+                    )),
+                Text(endDate,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w800)),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      style: kButton,
+                      onPressed: () {
+                        Navigator.pop(context);
+                        booked();
+                      },
+                      child: const Text('Confirm'),
+                    ),
+                    ElevatedButton(
+                      style: kButton,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Cancel'),
+                    )
+                  ],
+                )
               ],
             ),
           ),
@@ -89,22 +138,22 @@ class _CarDetailState extends State<CarDetail> {
     );
   }
 
-  // booked() async {
-  //   return showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return AlertDialog(
-  //           content: const Text(
-  //               "Your car has been successfully booked. You can view your booking in the profile section."),
-  //           actions: [
-  //             TextButton(
-  //               onPressed: () => Navigator.pop(context),
-  //               child: const Text("Continue"),
-  //             )
-  //           ],
-  //         );
-  //       });
-  // }
+  booked() async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: const Text(
+                "Your car has been successfully booked. You can view your booking in the profile section."),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("Continue"),
+              )
+            ],
+          );
+        });
+  }
 
   getCarDetails() async {
     setState(() {

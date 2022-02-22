@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kajaa/palatte.dart';
+import 'package:kajaa/screens/myBooking.dart';
 import 'package:kajaa/services/api_service.dart';
 import 'package:kajaa/services/navigation.dart';
 import 'package:kajaa/screens/LoginPage.dart';
@@ -30,7 +31,7 @@ class ProfileState extends State {
 
   getUserDetails() async {
     var response = await api.getRequest(UrlService.user + "?email=" + email);
-    print(response);
+
     if (response["success"]) {
       setState(() {
         userinfo = response["data"];
@@ -112,8 +113,8 @@ class ProfileState extends State {
                         vertical: 25, horizontal: 50),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(500),
-                      child: Image.asset(
-                        'assets/images/profile.jpg',
+                      child: Image.network(
+                        UrlService.baseUrl + userinfo["photo"],
                         width: 150,
                       ),
                     ),
@@ -128,7 +129,12 @@ class ProfileState extends State {
                         Center(
                           child: ElevatedButton(
                             style: kButton,
-                            onPressed: () {},
+                            onPressed: () {
+                              AppNavigation.push(
+                                context,
+                                const MyBooking(),
+                              );
+                            },
                             child: const Text('My Bookings'),
                           ),
                         ),
@@ -142,7 +148,7 @@ class ProfileState extends State {
                           ),
                         ),
                         Text(
-                          userinfo["name"],
+                          userinfo["user_id"],
                           style: const TextStyle(
                             color: Colors.black,
                           ),

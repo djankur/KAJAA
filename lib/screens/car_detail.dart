@@ -17,13 +17,11 @@ class CarDetail extends StatefulWidget {
 }
 
 class _CarDetailState extends State<CarDetail> {
-
   final _client = Dio();
   final DateRangePickerController _dateRangePickerController =
       DateRangePickerController();
 
   Map<String, dynamic> bookingData = {};
-
 
   String email = "";
   var userinfo = {};
@@ -143,29 +141,32 @@ class _CarDetailState extends State<CarDetail> {
     );
   }
 
-  booking_function() async{
+  booking_function() async {
     var response = await _client.post(UrlService.bookCar,
-          data: FormData.fromMap({"user_id": userinfo["user_id"], "reg_no": carData["reg_no"], "issue_date": startDate, "return_date": endDate}));
-     print(response);
-     var reply = jsonDecode(response.data);
-      print(reply);
-      if(reply == "success"){
-        Navigator.pop(context);
-                        booked("Your Car has been booked successfully");
-      }
-      else{
-        Navigator.pop(context);
-                        booked("Some error occurred");
-      }      
-  }        
+        data: FormData.fromMap({
+          "user_id": userinfo["user_id"],
+          "reg_no": carData["reg_no"],
+          "issue_date": startDate,
+          "return_date": endDate
+        }));
+    print(response);
+    var reply = jsonDecode(response.data);
+    print(reply);
+    if (reply == "success") {
+      Navigator.pop(context);
+      booked("Your Car has been booked successfully");
+    } else {
+      Navigator.pop(context);
+      booked("Some error occurred");
+    }
+  }
 
   booked(reply) async {
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-            content:  Text(
-                reply),
+            content: Text(reply),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
@@ -237,8 +238,8 @@ class _CarDetailState extends State<CarDetail> {
                   Expanded(
                     child: Align(
                       alignment: Alignment.topCenter,
-                      child: Image.asset(
-                        'assets/images/test.png',
+                      child: Image.network(
+                        UrlService.baseUrl + carData["photo"],
                         height: 400,
                         width: double.infinity,
                       ),

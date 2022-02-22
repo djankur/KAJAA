@@ -41,6 +41,7 @@ dependencies:
   flutter_easyloading: ^3.0.3
   shared_preferences: ^2.0.13
   syncfusion_flutter_datepicker: ^19.4.52
+  file_picker: ^4.4.0
 
 dev_dependencies:
   flutter_test:

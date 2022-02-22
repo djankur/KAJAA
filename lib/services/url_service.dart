@@ -9,4 +9,5 @@ class UrlService {
   static const signupP = baseUrl + "signup.php";
   static const user = baseUrl + "user.php";
   static const bookCar = baseUrl + "carbook.php";
+  static const viewBookingDetails = baseUrl + "bookingDetails.php";
 }

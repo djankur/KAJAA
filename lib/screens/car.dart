@@ -61,20 +61,19 @@ class MainListViewState extends State {
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: GestureDetector(
-                      onTap: () {
-                        AppNavigation.push(
-                          context,
-                          const Profile(),
-                        );
-                      },
-                      child: Text(userinfo["name"])
-                      // ClipRRect(
-                      //   borderRadius: BorderRadius.circular(50),
-                      //   child: Image.asset(
-                      //     'assets/images/profile.jpg',
-                      //   ),
-                      // ),
+                    onTap: () {
+                      AppNavigation.push(
+                        context,
+                        const Profile(),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Image.network(
+                        UrlService.baseUrl + userinfo["photo"],
                       ),
+                    ),
+                  ),
                 ),
               ],
               backgroundColor: Colors.white,

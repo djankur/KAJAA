@@ -51,104 +51,101 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Stack(
-        children: [
-          const BackgroundImage(),
-          Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Form(
-              key: _formKey,
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      const Center(
-                        child: Text(
-                          'Login',
-                          style: kHeading,
-                        ),
+    return Stack(
+      children: [
+        const BackgroundImage(),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Form(
+            key: _formKey,
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    const Center(
+                      child: Text(
+                        'Login',
+                        style: kHeading,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          onSaved: (value) => formData["email"] = value,
-                          validator: (value) =>
-                              value == "" ? "* E-mail cannot be empty" : null,
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            hintText: "Enter your e-mail",
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        onSaved: (value) => formData["email"] = value,
+                        validator: (value) =>
+                            value == "" ? "* E-mail cannot be empty" : null,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
+                          hintText: "Enter your e-mail",
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          validator: (value) =>
-                              value == "" ? "* Password cannot be empty" : null,
-                          onSaved: (value) => formData["password"] = value,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            hintText: "Enter your password",
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        validator: (value) =>
+                            value == "" ? "* Password cannot be empty" : null,
+                        onSaved: (value) => formData["password"] = value,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
+                          hintText: "Enter your password",
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        style: kButton,
+                        onPressed: login,
+                        child: const Text(
+                          "Login",
+                          style: kBodyText,
+                        ),
                       ),
-                      Center(
-                        child: ElevatedButton(
-                          style: kButton,
-                          onPressed: login,
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Not registered yet? ",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            AppNavigation.push(
+                              context,
+                              const Signup(),
+                            );
+                          },
                           child: const Text(
-                            "Login",
-                            style: kBodyText,
+                            "Sign up here.",
+                            style: kBodyLink,
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Not registered yet? ",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              AppNavigation.push(
-                                context,
-                                const Signup(),
-                              );
-                            },
-                            child: const Text(
-                              "Sign up here.",
-                              style: kBodyLink,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

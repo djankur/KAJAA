@@ -1,6 +1,6 @@
 import 'dart:convert';
-
-// ignore: import_of_legacy_library_into_null_safe
+import 'dart:ui';
+import 'package:file_picker/file_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
@@ -18,12 +18,24 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   final _client = Dio();
+  String imagePath = "";
+  var image = const Icon(
+    Icons.account_box,
+    size: 50,
+    color: Colors.white,
+  );
 
   Map<String, dynamic> formData = {};
 
   login() async {
     var formvalidate = _formKey.currentState!.validate();
     if (formvalidate) {
+      if (imagePath == "") {
+        return null;
+      } else {
+        formData["file"] = await MultipartFile.fromFile(imagePath,
+            filename: imagePath.split("/").last);
+      }
       _formKey.currentState!.save();
 
       var response = await _client.post(UrlService.signupP,
@@ -38,6 +50,20 @@ class _SignupState extends State<Signup> {
           const Login(),
         );
       }
+    }
+  }
+
+  userImage() async {
+    var result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      imagePath = result.files.single.path!;
+      setState(() {
+        image = const Icon(
+          Icons.done,
+          size: 50,
+          color: Colors.green,
+        );
+      });
     }
   }
 
@@ -58,6 +84,25 @@ class _SignupState extends State<Signup> {
                       child: Text(
                         'Sign up',
                         style: kHeading,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: GestureDetector(
+                        onTap: userImage,
+                        child: Center(
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                              child: CircleAvatar(
+                                radius: 50,
+                                backgroundColor:
+                                    Colors.grey.shade400.withOpacity(.4),
+                                child: image,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     Padding(

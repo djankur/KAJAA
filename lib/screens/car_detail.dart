@@ -3,6 +3,7 @@ import 'package:kajaa/palatte.dart';
 import 'package:kajaa/services/api_service.dart';
 import 'package:kajaa/services/url_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class CarDetail extends StatefulWidget {
   final String carid;
@@ -13,12 +14,40 @@ class CarDetail extends StatefulWidget {
 }
 
 class _CarDetailState extends State<CarDetail> {
-  String email = "";
+  final DateRangePickerController _dateRangePickerController =
+      DateRangePickerController();
 
+  String email = "";
   var userinfo = {};
   var carData = {};
   bool isLoading = true;
   var api = ApiService();
+  var val = "No date selected";
+
+  date() async {
+    showDialog<Widget>(
+        context: context,
+        barrierColor: Colors.white, // Background color
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return SfDateRangePicker(
+            selectionMode: DateRangePickerSelectionMode.range,
+            showActionButtons: true,
+            allowViewNavigation: true,
+            controller: _dateRangePickerController,
+            onSubmit: (value) {
+              val = value.toString();
+              Navigator.pop(context);
+              Navigator.pop(context);
+              carBook();
+            },
+            onCancel: () {
+              _dateRangePickerController.selectedRange = null;
+              Navigator.pop(context);
+            },
+          );
+        });
+  }
 
   carBook() {
     showModalBottomSheet(
@@ -47,7 +76,11 @@ class _CarDetailState extends State<CarDetail> {
                 const SizedBox(
                   height: 15,
                 ),
-                ElevatedButton(child: const Text('Select'), onPressed: () {})
+                ElevatedButton(child: const Text('Select'), onPressed: date),
+                Text(val,
+                    style: const TextStyle(
+                      fontSize: 16,
+                    )),
               ],
             ),
           ),
@@ -79,7 +112,7 @@ class _CarDetailState extends State<CarDetail> {
     });
     var response = await api
         .getRequest(UrlService.viewCarDetails + "?carid=" + widget.carid);
-    print(response);
+
     if (response["success"]) {
       setState(() {
         carData = response["data"];
@@ -96,7 +129,7 @@ class _CarDetailState extends State<CarDetail> {
 
   getUserDetails() async {
     var response = await api.getRequest(UrlService.user + "?email=" + email);
-    print(response);
+
     if (response["success"]) {
       setState(() {
         userinfo = response["data"];
@@ -107,7 +140,6 @@ class _CarDetailState extends State<CarDetail> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getEmail();
     getCarDetails();
@@ -286,130 +318,6 @@ class _CarDetailState extends State<CarDetail> {
                     ),
                   ),
                 ],
-              )
-
-        //   height: MediaQuery.of(context).size.height,
-        //   child: Column(
-        //     mainAxisSize: MainAxisSize.min,
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: [
-        //       Expanded(
-        //         child: Container(
-        //           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        //           child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             children: [
-        //               const SizedBox(
-        //                 height: kToolbarHeight,
-        //               ),
-        //               const SizedBox(
-        //                 height: 25.0,
-        //               ),
-        //               Text.rich(
-        //                 TextSpan(
-        //                   children: [
-        //                     TextSpan(
-        //                       text: carData["car_name"],
-        //                       style: const TextStyle(
-        //                         fontWeight: FontWeight.w600,
-        //                         fontSize: 22.0,
-        //                         color: Color(0xFF333333),
-        //                       ),
-        //                     ),
-        //                     TextSpan(
-        //                       text: carData["price"],
-        //                       style: const TextStyle(
-        //                         height: 1.7,
-        //                         fontSize: 14.0,
-        //                         color: Colors.grey,
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //               const SizedBox(
-        //                 height: 30.0,
-        //               ),
-        //               Expanded(
-        //                 // Lets create a list of all car image colors
-        //                 child: Align(
-        //                   alignment: Alignment.center,
-        //                   child: Image.asset(
-        //                     'assets/images/test.png',
-        //                   ),
-        //                 ),
-        //               )
-        //             ],
-        //           ),
-        //         ),
-        //       ),
-        //       Expanded(
-        //         child: Container(
-        //           height: double.infinity,
-        //           width: double.infinity,
-        //           decoration: const BoxDecoration(
-        //             color: Colors.white,
-        //             borderRadius: BorderRadius.only(
-        //               topLeft: Radius.circular(50.0),
-        //               topRight: Radius.circular(50.0),
-        //             ),
-        //           ),
-        //           padding: const EdgeInsets.symmetric(
-        //             horizontal: 24.0,
-        //             vertical: 32.0,
-        //           ),
-        //           child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             children: [
-        //               Row(
-        //                 children: [
-        //                   _getTabItem("Inspire", true),
-        //                   const SizedBox(
-        //                     width: 15.0,
-        //                   ),
-        //                   _getTabItem("Inform", false),
-        //                   const SizedBox(
-        //                     width: 15.0,
-        //                   ),
-        //                   _getTabItem("Technical Data", false),
-        //                 ],
-        //               ),
-        //               const SizedBox(
-        //                 height: 25.0,
-        //               ),
-        //               Text(
-        //                 "You can wrap your Container in an InkWell or GestureDetector. The difference is that InkWell is a material widget that shows a visual indication that the touch was received, whereas GestureDetector is a more general purpose widget that shows no visual indicator.",
-        //                 style: TextStyle(
-        //                   height: 1.5,
-        //                   fontSize: 16.0,
-        //                   color: Colors.black.withOpacity(.5),
-        //                 ),
-        //               ),
-        //               const SizedBox(height: 15.0),
-        //               const Divider(),
-        //               const SizedBox(height: 15.0),
-        //               Center(
-        //                 child: ElevatedButton(
-        //                   style: ElevatedButton.styleFrom(
-        //                       padding: const EdgeInsets.symmetric(
-        //                           vertical: 20, horizontal: 100),
-        //                       primary: Colors.lightBlue, // background
-        //                       onPrimary: Colors.white, // foreground
-        //                       shape: RoundedRectangleBorder(
-        //                           borderRadius:
-        //                               BorderRadius.circular(50))),
-        //                   onPressed: () {},
-        //                   child: const Text('Book'),
-        //                 ),
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-
-        );
+              ));
   }
 }

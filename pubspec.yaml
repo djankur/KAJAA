@@ -40,6 +40,7 @@ dependencies:
   fluttertoast: ^8.0.8
   flutter_easyloading: ^3.0.3
   shared_preferences: ^2.0.13
+  syncfusion_flutter_datepicker: ^19.4.52
 
 dev_dependencies:
   flutter_test:

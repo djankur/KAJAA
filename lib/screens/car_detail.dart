@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
 import 'package:kajaa/services/api_service.dart';
@@ -14,8 +17,13 @@ class CarDetail extends StatefulWidget {
 }
 
 class _CarDetailState extends State<CarDetail> {
+
+  final _client = Dio();
   final DateRangePickerController _dateRangePickerController =
       DateRangePickerController();
+
+  Map<String, dynamic> bookingData = {};
+
 
   String email = "";
   var userinfo = {};
@@ -115,10 +123,7 @@ class _CarDetailState extends State<CarDetail> {
                   children: [
                     ElevatedButton(
                       style: kButton,
-                      onPressed: () {
-                        Navigator.pop(context);
-                        booked();
-                      },
+                      onPressed: booking_function,
                       child: const Text('Confirm'),
                     ),
                     ElevatedButton(
@@ -138,13 +143,29 @@ class _CarDetailState extends State<CarDetail> {
     );
   }
 
-  booked() async {
+  booking_function() async{
+    var response = await _client.post(UrlService.bookCar,
+          data: FormData.fromMap({"user_id": userinfo["user_id"], "reg_no": carData["reg_no"], "issue_date": startDate, "return_date": endDate}));
+     print(response);
+     var reply = jsonDecode(response.data);
+      print(reply);
+      if(reply == "success"){
+        Navigator.pop(context);
+                        booked("Your Car has been booked successfully");
+      }
+      else{
+        Navigator.pop(context);
+                        booked("Some error occurred");
+      }      
+  }        
+
+  booked(reply) async {
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-            content: const Text(
-                "Your car has been successfully booked. You can view your booking in the profile section."),
+            content:  Text(
+                reply),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),

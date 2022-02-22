@@ -29,7 +29,7 @@ class _AllCarState extends State<AllCar> {
     if (responseData["success"]) {
       allCars = responseData["data"];
       // ignore: avoid_print
-      print(responseData["data"]);
+      // print(responseData["data"]);
     }
     setState(() {});
   }

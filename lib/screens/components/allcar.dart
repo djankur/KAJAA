@@ -51,7 +51,7 @@ class _AllCarState extends State<AllCar> {
                     AppNavigation.push(
                         context,
                         CarDetail(
-                          carid: allCars[index]["car_id"],
+                          carid: allCars[index]["reg_no"],
                         ));
                   },
                   child: Container(

@@ -47,9 +47,14 @@ class _CarDetailState extends State<CarDetail> {
             controller: _dateRangePickerController,
             onSubmit: (value) {
               startDate = _dateRangePickerController.selectedRange!.startDate
-                  .toString();
-              endDate =
-                  _dateRangePickerController.selectedRange!.endDate.toString();
+                  .toString()
+                  .split(' ')
+                  .first;
+
+              endDate = _dateRangePickerController.selectedRange!.endDate
+                  .toString()
+                  .split(' ')
+                  .first;
               Navigator.pop(context);
               Navigator.pop(context);
               carBook();
@@ -71,70 +76,72 @@ class _CarDetailState extends State<CarDetail> {
           color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(18.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const Text(
-                  'Confirm booking',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Text('Select booking duration',
-                        style: TextStyle(
-                          fontSize: 16,
-                        )),
-                    ElevatedButton(
-                        child: const Text('Select'), onPressed: date),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const Text("Booking date:",
-                    style: TextStyle(
-                      fontSize: 16,
-                    )),
-                Text(startDate,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w800)),
-                const SizedBox(
-                  height: 15,
-                ),
-                const Text("Return date:",
-                    style: TextStyle(
-                      fontSize: 16,
-                    )),
-                Text(endDate,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w800)),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      style: kButton,
-                      onPressed: booking_function,
-                      child: const Text('Confirm'),
-                    ),
-                    ElevatedButton(
-                      style: kButton,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('Cancel'),
-                    )
-                  ],
-                )
-              ],
-            ),
+            child: ListView(children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const Text(
+                    'Confirm booking',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Text('Select booking duration',
+                          style: TextStyle(
+                            fontSize: 16,
+                          )),
+                      ElevatedButton(
+                          child: const Text('Select'), onPressed: date),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const Text("Booking date:",
+                      style: TextStyle(
+                        fontSize: 16,
+                      )),
+                  Text(startDate,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w800)),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const Text("Return date:",
+                      style: TextStyle(
+                        fontSize: 16,
+                      )),
+                  Text(endDate,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w800)),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        style: kButton,
+                        onPressed: booking_function,
+                        child: const Text('Confirm'),
+                      ),
+                      ElevatedButton(
+                        style: kButton,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Cancel'),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ]),
           ),
         );
       },
@@ -288,78 +295,16 @@ class _CarDetailState extends State<CarDetail> {
                               const SizedBox(
                                 height: 15,
                               ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Card(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 10, horizontal: 20),
-                                      child: Column(
-                                        children: [
-                                          const Text(
-                                            "Color",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            "Black",
-                                            style: TextStyle(
-                                                color: Colors.black
-                                                    .withOpacity(.5)),
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  carData["reg_no"],
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 22.0,
+                                    color: Color(0xFF333333),
                                   ),
-                                  Card(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 10, horizontal: 20),
-                                      child: Column(
-                                        children: [
-                                          const Text(
-                                            "Color",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            "Black",
-                                            style: TextStyle(
-                                                color: Colors.black
-                                                    .withOpacity(.5)),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Card(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 10, horizontal: 20),
-                                      child: Column(
-                                        children: [
-                                          const Text(
-                                            "Color",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            "Black",
-                                            style: TextStyle(
-                                                color: Colors.black
-                                                    .withOpacity(.5)),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                               const SizedBox(
                                 height: 15,

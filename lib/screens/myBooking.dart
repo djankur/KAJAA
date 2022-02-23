@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kajaa/palatte.dart';
+import 'package:kajaa/screens/car.dart';
 import 'package:kajaa/services/api_service.dart';
+import 'package:kajaa/services/navigation.dart';
 import 'package:kajaa/services/url_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,6 +30,29 @@ class _MyBookingState extends State<MyBooking> {
   bool isLoading = true;
   var api = ApiService();
   bool isData = false;
+
+  cancelBook() async {
+    var response = await api.getRequest(
+        UrlService.cancelBooking + "?userid=" + userinfo["user_id"]);
+
+    if (response["success"]) {
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: const Text("Booking cancelled successfully!"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    AppNavigation.push(context, const MainListView());
+                  },
+                  child: const Text("Continue"),
+                ),
+              ],
+            );
+          });
+    }
+  }
 
   getBookingDetails() async {
     var response = await api.getRequest(
@@ -192,7 +217,14 @@ class _MyBookingState extends State<MyBooking> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      style: kButton,
+                      onPressed: cancelBook(),
+                      child: const Text('Cancel Booking'),
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -30,15 +30,13 @@ class _MyBookingState extends State<MyBooking> {
   bool isData = false;
 
   getBookingDetails() async {
-    setState(() {
-      isLoading = true;
-    });
-    var response =
-        await api.getRequest(UrlService.viewBookingDetails + "?userid=" + id);
+    var response = await api.getRequest(
+        UrlService.viewBookingDetails + "?userid=" + userinfo["user_id"]);
 
     if (response["success"]) {
       setState(() {
         bookData = response["data"];
+        isLoading = false;
       });
       if (response["data"] != null) {
         setState(() {
@@ -52,7 +50,6 @@ class _MyBookingState extends State<MyBooking> {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       email = preferences.getString('email')!;
-      id = userinfo["user_id"];
     });
   }
 
@@ -60,9 +57,9 @@ class _MyBookingState extends State<MyBooking> {
     var response = await api.getRequest(UrlService.user + "?email=" + email);
 
     if (response["success"]) {
+      getBookingDetails();
       setState(() {
         userinfo = response["data"];
-        isLoading = false;
       });
     }
   }
@@ -71,8 +68,6 @@ class _MyBookingState extends State<MyBooking> {
   void initState() {
     super.initState();
     getEmail();
-
-    getBookingDetails();
   }
 
   @override
@@ -107,43 +102,93 @@ class _MyBookingState extends State<MyBooking> {
                     ),
                   ),
                   const SizedBox(
-                    height: 380,
+                    height: 30,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [Text(bookData["transaction_id"])],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                bookData["company"],
+                                style: kBodyText2,
+                              ),
+                              const Text(
+                                " ",
+                              ),
+                              Text(
+                                bookData["car_name"],
+                                style: kBodyText2,
+                              )
+                            ],
+                          ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text("Status: "),
-                            Text(bookData["issue_status"]),
-                          ],
+                        Divider(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Registration no. : ",
+                                style: kBodyText1,
+                              ),
+                              Text(
+                                bookData["reg_no"],
+                                style: kBodyText2,
+                              )
+                            ],
+                          ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text("Reg no: "),
-                            Text(bookData["reg_no"]),
-                          ],
+                        Divider(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Status : ",
+                                style: kBodyText1,
+                              ),
+                              Text(
+                                bookData["issue_status"],
+                                style: kBodyText2,
+                              )
+                            ],
+                          ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text("Booking Date: "),
-                            Text(bookData["issue_date"]),
-                          ],
+                        Divider(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Booking Date : ",
+                                style: kBodyText1,
+                              ),
+                              Text(
+                                bookData["issue_date"],
+                                style: kBodyText2,
+                              )
+                            ],
+                          ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text("Return Date: "),
-                            Text(bookData["return_date"]),
-                          ],
+                        Divider(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Return Date : ",
+                                style: kBodyText1,
+                              ),
+                              Text(
+                                bookData["return_date"],
+                                style: kBodyText2,
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),

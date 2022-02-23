@@ -142,13 +142,13 @@ class ProfileState extends State {
                           height: 20,
                         ),
                         Text(
-                          "Username",
+                          "Name",
                           style: TextStyle(
                             color: Colors.black.withOpacity(.5),
                           ),
                         ),
                         Text(
-                          userinfo["user_id"],
+                          userinfo["name"],
                           style: const TextStyle(
                             color: Colors.black,
                           ),
@@ -173,9 +173,9 @@ class ProfileState extends State {
                             color: Colors.black.withOpacity(.5),
                           ),
                         ),
-                        Text(
-                          userinfo["password"],
-                          style: const TextStyle(
+                        const Text(
+                          "*******",
+                          style: TextStyle(
                             color: Colors.black,
                           ),
                         ),

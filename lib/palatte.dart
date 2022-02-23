@@ -11,6 +11,16 @@ const TextStyle kBodyText = TextStyle(
   fontWeight: FontWeight.w600,
   color: Colors.white,
 );
+const TextStyle kBodyText1 = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w400,
+  color: Colors.black,
+);
+const TextStyle kBodyText2 = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
+  color: Colors.black,
+);
 
 const TextStyle kBodyLink = TextStyle(
   fontSize: 15,
